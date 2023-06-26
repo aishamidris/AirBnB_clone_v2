@@ -17,9 +17,10 @@ class BaseModel:
     updated_at = column(DateTime, nullable=False, datetime.utcnow())
 
 
+
 def __init__(self, *args, **kwargs):
-    """Instatntiates a new model"""
-   if not kwargs:
+    """Instantiates a new model"""
+    if not kwargs:
             from models import storage
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
