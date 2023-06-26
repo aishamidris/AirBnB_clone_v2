@@ -13,11 +13,12 @@ class BaseModel:
     """A base class for all hbnb models"""
 
     id = column(string(60), primary_key=True, nullable=False)
-    created_at =column(DateTime, nullable=False, default=datetime.utcnow())
+    created_at = column(DateTime, nullable=False, default=datetime.utcnow())
     updated_at = column(DateTime, nullable=False, datetime.utcnow())
 
-def __init__(self, *args, **kwargs):
-        """Instatntiates a new model"""
+
+  def __init__(self, *args, **kwargs):
+   """Instatntiates a new model"""
         if not kwargs:
             from models import storage
             self.id = str(uuid.uuid4())
@@ -32,7 +33,7 @@ def __init__(self, *args, **kwargs):
             del kwargs['__class__']
             self.__dict__.update(kwargs)
 
-    def __str__(self):
+   def __str__(self):
         """Returns a string representation of the instance"""
         cls = (str(type(self)).split('.')[-1]).split('\'')[0]
         return '[{}] ({}) {}'.format(cls, self.id, self.__dict__)
